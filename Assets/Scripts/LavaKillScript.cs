@@ -14,6 +14,8 @@ public class LavaKillScript : MonoBehaviour
     [SerializeField] float upwardLavaForce = 5;
     [SerializeField] Rigidbody2D playerRb;
     [SerializeField] Transform playerTrn;
+    [SerializeField] GameObject lavaTrail;
+    public bool lavaDisabledTrail = false;
 
     // exit and retry buttons
     //public GameObject buttons;
@@ -31,6 +33,8 @@ public class LavaKillScript : MonoBehaviour
         //deathText.color = color1;
         //buttons.SetActive(false);
         deathScreen.SetActive(false);
+        lavaTrail.SetActive(false);
+        lavaDisabledTrail = true;
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -43,21 +47,26 @@ public class LavaKillScript : MonoBehaviour
                 
                 Bubble.SetActive(false);
                 
+
                 //playerTrn.position = new Vector3(playerTrn.position.x, playerTrn.position.y + 2, playerTrn.position.z);
                 playerRb.velocity += (Vector2.up * 50);
+                lavaTrail.SetActive(true);
+                lavaDisabledTrail = false;
 
-                Delay(4f);
 
-                if(playerRb.velocity.y > 30)
+                if (playerRb.velocity.y > 30)
                 {
+                    StartCoroutine(DelayDisableTrail(1));
+                    
                     powerUpScript.poweredUp = false;
+                    
                 }
-                
 
             }
 
             
         }
+
 
     }
 
@@ -77,12 +86,16 @@ public class LavaKillScript : MonoBehaviour
         }
     }
 
-    IEnumerator Delay(float seconds)
+    IEnumerator DelayDisableTrail(float seconds)
     {
         yield return new WaitForSeconds(seconds);
+        lavaTrail.SetActive(false);
+        lavaDisabledTrail = true;
+
     }
 
-    
-    
+
+
+
 
 }
