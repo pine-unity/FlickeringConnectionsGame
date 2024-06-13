@@ -6,6 +6,7 @@ public class FinishCheckpointScript : MonoBehaviour
 {
     [SerializeField] GameObject winText;
     [SerializeField] GameObject player;
+    public bool won = false;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class FinishCheckpointScript : MonoBehaviour
             winText.SetActive(true);
             Debug.Log("You did it!");
             player.SetActive(false);
+            won = true;
         }
     }
 }

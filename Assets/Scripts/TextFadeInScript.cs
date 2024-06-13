@@ -6,11 +6,21 @@ using UnityEngine.UI;
 public class TextFadeInScript : MonoBehaviour
 {
     [SerializeField] Text text;
+    [SerializeField] private OptionsEnableDisableScript optionScript;
+
     // Start is called before the first frame update
     void Start()
     {
         text.color = new Color(255, 255, 255, 0);
         StartCoroutine(Timer());
+    }
+
+    private void Update()
+    {
+        if(optionScript.playerDisabled)
+        {
+            text.color = new Color(255, 255, 255, 0);
+        }
     }
 
     IEnumerator Timer()

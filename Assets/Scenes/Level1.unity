@@ -5980,6 +5980,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winText: {fileID: 860276060}
   player: {fileID: 941425072}
+  won: 0
 --- !u!212 &304849435
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12016,6 +12017,8 @@ MonoBehaviour:
   EscUI: {fileID: 769719395}
   EscUIActive: 0
   playerDisabled: 0
+  lavaKillScript: {fileID: 941425079}
+  finishCheckpointScript: {fileID: 304849434}
 --- !u!1 &510511881
 GameObject:
   m_ObjectHideFlags: 0
@@ -18700,6 +18703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 860441731}
+  optionScript: {fileID: 499716144}
 --- !u!114 &860441731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18887,6 +18891,7 @@ MonoBehaviour:
   playerTrn: {fileID: 941425086}
   lavaTrail: {fileID: 488607741}
   lavaDisabledTrail: 0
+  dead: 0
   color1: {r: 0, g: 0, b: 0, a: 0}
   color2: {r: 1, g: 1, b: 1, a: 0}
 --- !u!114 &941425080
@@ -22526,6 +22531,10 @@ PrefabInstance:
     - target: {fileID: 4441678183014986289, guid: 79e0ec2e4acdf4151bd3655580eaeffc, type: 3}
       propertyPath: m_LinearDrag
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4441678183014986289, guid: 79e0ec2e4acdf4151bd3655580eaeffc, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4441678183014986289, guid: 79e0ec2e4acdf4151bd3655580eaeffc, type: 3}
       propertyPath: m_GravityScale

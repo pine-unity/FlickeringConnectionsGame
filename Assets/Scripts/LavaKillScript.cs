@@ -16,6 +16,7 @@ public class LavaKillScript : MonoBehaviour
     [SerializeField] Transform playerTrn;
     [SerializeField] GameObject lavaTrail;
     public bool lavaDisabledTrail = false;
+    public bool dead = false;
 
     // exit and retry buttons
     //public GameObject buttons;
@@ -82,6 +83,7 @@ public class LavaKillScript : MonoBehaviour
                 //buttons.SetActive(true);
                 controlsText.SetActive(false);
                 deathScreen.SetActive(true);
+                dead = true;
             }
         }
     }
