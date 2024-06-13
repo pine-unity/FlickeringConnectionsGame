@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool isIdle = true;
     [SerializeField] bool useFasterSpeed = false;
 
+    [SerializeField] OptionsEnableDisableScript optionScript;
+
     
 
     // initial x
@@ -52,6 +54,23 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
+        if (optionScript.playerDisabled)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezePosition;
+        }
+        else
+        {
+            rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+            // fixing some weird bug with the freezing not letting the player gravity work again after disabling
+            // the option menu
+            transform.position = new Vector3(transform.position.x + 1, transform.position.y, -15.6f);
+            transform.position = new Vector3(transform.position.x - 1, transform.position.y, -15.6f);
+        }
+
+        //------------------------------\\
+
         x = transform.position.x;
 
         if((Animator.speed > 1) || (useFasterSpeed))
@@ -63,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
         //------------------------------\\
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && optionScript.playerDisabled == false)
         {
 
             
@@ -107,7 +126,7 @@ public class PlayerController : MonoBehaviour
 
         //------------------------------\\
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && optionScript.playerDisabled == false)
         {
             if (rb.velocity.x < 1000 && rb.velocity.x >= 0 && !useFasterSpeed)
             {
@@ -156,7 +175,7 @@ public class PlayerController : MonoBehaviour
 
         //------------------------------\\
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && optionScript.playerDisabled == false)
         {
             rb.AddForce(Vector2.up * jumpForce);
         }
@@ -246,7 +265,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         //Debug.Log("should have sped up");
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && optionScript.playerDisabled == false)
         {
             if (!isIdle)
             {
