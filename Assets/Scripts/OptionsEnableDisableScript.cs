@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class OptionsEnableDisableScript : MonoBehaviour
 {
@@ -25,6 +27,7 @@ public class OptionsEnableDisableScript : MonoBehaviour
         {
             EscUI.SetActive(false);
             EscUIActive = false;
+            playerDisabled = false;
 
         } else
         {
@@ -51,6 +54,18 @@ public class OptionsEnableDisableScript : MonoBehaviour
 
         
         
+    }
+
+    public void ResumeGame()
+    {
+        EscUI.SetActive(false);
+        EscUIActive = false;
+        playerDisabled = false;
+    }
+
+    public void QuitGame()
+    {
+        SceneManager.LoadScene(0);
     }
 
     

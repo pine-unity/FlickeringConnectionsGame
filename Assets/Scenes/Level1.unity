@@ -5846,7 +5846,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 304775930}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 499716144}
+        m_TargetAssemblyTypeName: OptionsEnableDisableScript, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &304775930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20588,7 +20600,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1670271929}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 499716144}
+        m_TargetAssemblyTypeName: OptionsEnableDisableScript, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1670271929
 MonoBehaviour:
   m_ObjectHideFlags: 0
