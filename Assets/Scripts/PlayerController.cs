@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isIdle = true;
     [SerializeField] private bool useFasterSpeed = false;
 
-    [SerializeField] OptionsEnableDisableScript optionScript;
+    [SerializeField] private OptionsEnableDisableScript optionScript;
 
     
 
