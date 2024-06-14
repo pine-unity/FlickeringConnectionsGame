@@ -4,26 +4,25 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // emilio is a confirmed feathery, he has furry-like tendencies
 
     public Rigidbody2D rb;
     // horizontal speed
-    [SerializeField] int speedX = 1000;
+    [SerializeField] private int speedX = 1000;
     int jumpForce = 450;
     // to see if the player is on the ground. revolutionary, right?
-    [SerializeField] bool isGrounded;
+    [SerializeField] private bool isGrounded;
     // horizontal direction
-    [SerializeField] int dirX = 1;
+    [SerializeField] private int dirX = 1;
     // x position
-    float x;
+    private float x;
     // player animator
-    Animator Animator;
+    private Animator Animator;
     // to prevent the player from shooting off the screen
-    [SerializeField] bool flippedDirInLast = false;
+    [SerializeField] private bool flippedDirInLast = false;
     // to prevent the WaitToSpeedUp() ienum to be called multiple times while the A or D key is held down
-    [SerializeField] bool startedSpeedingUp = false;
-    [SerializeField] bool isIdle = true;
-    [SerializeField] bool useFasterSpeed = false;
+    [SerializeField] private bool startedSpeedingUp = false;
+    [SerializeField] private bool isIdle = true;
+    [SerializeField] private bool useFasterSpeed = false;
 
     [SerializeField] OptionsEnableDisableScript optionScript;
 
@@ -167,7 +166,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || isIdle == true)
         {
             Animator.speed = 1;
-            //speedX = 1000;
+            
             startedSpeedingUp = false;
             useFasterSpeed = false;
             
@@ -187,7 +186,7 @@ public class PlayerController : MonoBehaviour
             Animator.SetBool("isWalking", false);
             Animator.SetBool("isIdle", true);
             Animator.speed = 1;
-            //speedX = 1000;
+            
 
 
             if (Animator.GetBool("isIdle") == true && Animator.GetBool("isWalking") == false)
@@ -199,7 +198,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        //Debug.Log(rb.velocity);
+        
     }
 
     //~~---------------------------------------------------~~\\
@@ -264,7 +263,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator WaitToSpeedUp()
     {
         yield return new WaitForSeconds(1.0f);
-        //Debug.Log("should have sped up");
+        // should have sped up
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && optionScript.playerDisabled == false)
         {
             if (!isIdle)
@@ -275,10 +274,10 @@ public class PlayerController : MonoBehaviour
             else if(isIdle || (isIdle && startedSpeedingUp))
             {
                 Animator.speed = 1;
-                //speedX = 2000;
+                
                 useFasterSpeed = false;
                 startedSpeedingUp = false;
-                //Debug.Log("should slow down");
+                // should slow down
                 
             }
             
@@ -286,13 +285,6 @@ public class PlayerController : MonoBehaviour
             
         }
         
-    }
-
-    //~~---------------------------------------------------~~\\
-
-    IEnumerator Delay(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
     }
 
     //~~---------------------------------------------------~~\\
